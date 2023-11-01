@@ -1,53 +1,71 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useMetaMask } from "../MetaMaskContext";
-import NFTCard from "../components/NFTCard";
-import "./pages.styles.css";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Pagination, Paper, Toolbar, Typography, AppBar } from "@mui/material";
+import NFTCard from "../components/card/NFTCard";
 
-function Home() {
-  const { isMetamaskConnected, connectToMetamask, disconnectFromMetamask } =
-    useMetaMask();
+const NFTsPerPage = 5;
 
-  const handleConnectAndFetchData = async () => {
-    if (!isMetamaskConnected) {
-      await connectToMetamask();
+const Home = () => {
+  const [nfts, setNFTs] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+  const [page, setPage] = useState(1);
+
+  const API_KEY = "5402e464f97c44968342dd3057b4a262";
+
+  const fetchNFTs = async () => {
+    try {
+      const response = await axios.get("https://api.opensea.io/api/v1/assets", {
+        params: {
+          order_direction: "asc",
+          offset: (page - 1) * NFTsPerPage,
+          limit: NFTsPerPage,
+        },
+        headers: {
+          "X-API-KEY": API_KEY,
+        },
+      });
+      setNFTs(response.data.assets);
+      setLoading(false);
+    } catch (err: any) {
+      setError(err.message);
+      setLoading(false);
     }
+  };
+
+  useEffect(() => {
+    fetchNFTs();
+  }, [page]);
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setPage(value);
   };
 
   return (
     <div>
-      <h2>Home Page</h2>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6">NFTs</Typography>
+        </Toolbar>
+      </AppBar>
 
-      {isMetamaskConnected ? (
-        <div>
-          <Link to="/profile">Go to Profile</Link>
-          <button onClick={disconnectFromMetamask} className="connect-button">
-            Disconnect
-          </button>{" "}
-        </div>
-      ) : (
-        <button onClick={handleConnectAndFetchData} className="connect-button">
-          Connect to MetaMask
-        </button>
-      )}
-      <NFTCard />
+      <div className="nft-card">
+        {nfts.map((nft: any, index) => (
+          <NFTCard key={nft.id} nft={nft} />
+        ))}
+      </div>
+
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: {error}</p>}
+
+      <Paper>
+        <Pagination count={8} page={page} onChange={handlePageChange} />
+      </Paper>
     </div>
   );
-}
+};
 
 export default Home;
-
-// import React from "react";
-// import ConnectWallet from "../components/ConnectWallet";
-// import "../styles.css";
-
-// const Home = () => {
-//   return (
-//     <div>
-//       <h2 className="title">Home Page</h2>
-//       <ConnectWallet />
-//     </div>
-//   );
-// };
-
-// export default Home;

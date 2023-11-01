@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
-import "./styles.css";
+
 const ConnectWallet: React.FC = () => {
   const [connected, setConnected] = useState(false);
   const [currentAccount, setCurrentAccount] = useState<string | null>(null);

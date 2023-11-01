@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
 import Home from "../pages/Home";
-import { MetaMaskProvider } from "../MetaMaskContext";
+import { MetaMaskProvider } from "../contexts/MetaMaskContext";
 
 describe("Home Page", () => {
   it("should render the Connect to MetaMask button", () => {
