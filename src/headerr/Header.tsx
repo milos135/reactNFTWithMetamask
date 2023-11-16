@@ -1,40 +1,46 @@
 import { Link } from "react-router-dom";
-import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
+import { AppBar, Toolbar, Button, Box } from "@mui/material";
 import { useMetaMask } from "../contexts/MetaMaskContext";
+import styled from "styled-components";
+
+const StyledAppBar = styled(AppBar)`
+  && {
+    background: linear-gradient(
+      109.6deg,
+      rgb(9, 9, 121) 11.2%,
+      rgb(144, 6, 161) 53.7%,
+      rgb(0, 212, 255) 100.2%
+    );
+    height: 7vh;
+    display: flex;
+    justify-content: space-between;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  text-transform: uppercase;
+  color: white;
+  margin-right: 16px;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 const Header = () => {
   const { isMetamaskConnected, connectToMetamask, disconnectFromMetamask } =
     useMetaMask();
 
-  const linkStyle = {
-    textDecoration: "none",
-    color: "white",
-    marginRight: "16px",
-  };
-
-  const toolbarStyle = {
-    display: "flex",
-    justifyContent: "space-between",
-    backgroundColor: "green",
-  };
-
-  const linksContainerStyle = {
-    display: "flex",
-    alignItems: "center",
-  };
-
   return (
-    <AppBar position="static">
-      <Toolbar style={toolbarStyle}>
-        <div style={linksContainerStyle}>
-          <Link to="/" style={linkStyle}>
-            Home
-          </Link>
-          <Link to="/profile" style={linkStyle}>
-            Profile
-          </Link>
-        </div>
+    <StyledAppBar position="static">
+      <Toolbar style={{ justifyContent: "space-between" }}>
         <Box>
+          <StyledLink to="/">Home</StyledLink>
+          <StyledLink to="/profile">Profile</StyledLink>
+        </Box>
+        <ButtonContainer>
           {isMetamaskConnected ? (
             <Button color="inherit" onClick={disconnectFromMetamask}>
               Disconnect MetaMask
@@ -44,9 +50,9 @@ const Header = () => {
               Connect MetaMask
             </Button>
           )}
-        </Box>
+        </ButtonContainer>
       </Toolbar>
-    </AppBar>
+    </StyledAppBar>
   );
 };
 

@@ -36,6 +36,7 @@ export function MetaMaskProvider({ children }: { children: React.ReactNode }) {
         }
       } catch (error) {
         console.error(error);
+        setIsMetamaskConnected(false);
       }
     }
   };
