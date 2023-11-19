@@ -1,98 +1,85 @@
 import { useMetaMask } from "../contexts/MetaMaskContext";
 import Typography from "@mui/material/Typography";
-import {
-  StyledProfileWrapper,
-  StyledProfile,
-} from "./styledPages/Profile.styled";
+import { StyledProfile } from "./styledPages/PageWrapper.styled";
 
 function Profile() {
   const { isMetamaskConnected, address, balance } = useMetaMask();
 
   return (
-    <StyledProfileWrapper>
-      <StyledProfile>
-        <h2>Profile Page</h2>
-        <Typography variant="body1">
-          {isMetamaskConnected ? (
-            <>
-              Connected with address: {address}
-              {balance && (
-                <>
-                  <br />
-                  Balance: {balance} ETH
-                </>
-              )}
-            </>
-          ) : (
-            <>Please connect to MetaMask to view your profile.</>
-          )}
-        </Typography>
+    <StyledProfile>
+      <h2>Profile Page</h2>
+      <Typography variant="body1">
+        {isMetamaskConnected ? (
+          <>
+            Connected with address: {address}
+            {balance && (
+              <>
+                <br />
+                Balance: {balance} ETH
+              </>
+            )}
+          </>
+        ) : (
+          <></>
+        )}
+      </Typography>
 
-        <Typography variant="body1">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
-          ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor
-          sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit
-          amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
-          ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor
-          sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit
-          amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
-          ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor
-          sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua.
-          <p>
-            {" "}
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
-            ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit
-            amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt
-            ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua.
-          </p>
-        </Typography>
-      </StyledProfile>
-    </StyledProfileWrapper>
+      <Typography variant="body1">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor
+        sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt
+        ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
+        et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
+        ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
+        et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
+        ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
+        et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
+        ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
+        et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
+        ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
+        et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
+        ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
+        et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
+        ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
+        et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
+        ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua.
+      </Typography>
+    </StyledProfile>
   );
 }
 

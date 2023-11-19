@@ -5,7 +5,7 @@ function RouteGuard() {
   const { isMetamaskConnected } = useMetaMask();
 
   if (!isMetamaskConnected) {
-    // Ako niste povezani, onemogućite pristup stranici "Profile" i preusmerite korisnika na početnu stranicu
+    // If not connected, redirect to the home page
     return <Navigate to="/" replace />;
   }
 

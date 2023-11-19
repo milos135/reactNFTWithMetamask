@@ -6,7 +6,6 @@ import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 interface NFT {
   id: string;
   name: string;
-  description: string;
   image_url: string;
 }
 
@@ -15,8 +14,8 @@ interface NFTCardProps {
 }
 
 const CardStyled = {
-  width: 250,
-  height: 320,
+  width: "250px",
+  height: "320",
   margin: "16px",
   backgroundImage: "radial-gradient(circle farthest-side, #fceabb, #f8b500)",
   borderRadius: "15px",

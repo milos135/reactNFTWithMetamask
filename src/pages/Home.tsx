@@ -6,14 +6,14 @@ import { StyledCardContainer } from "./styledPages/StyledCardContainer.styled";
 import { NFTGrid } from "../components/card/styledCard/NFTGrid.styled";
 
 const NFTsPerPage = 5;
+const TotalNFTs = 40;
+const TotalPages = Math.ceil(TotalNFTs / NFTsPerPage);
 
 interface NFT {
   id: string;
   name: string;
   description: string;
   image_url: string;
-  background_color?: string;
-  asset_contract: { chain_identifier: string };
 }
 
 const Home: React.FC = () => {
@@ -24,37 +24,40 @@ const Home: React.FC = () => {
 
   const fetchNFTs = async (pageNumber: number) => {
     try {
-      const response = await axios.get("https://api.opensea.io/api/v1/assets", {
-        params: {
-          order_direction: "asc",
-          offset: (pageNumber - 1) * NFTsPerPage,
-          limit: NFTsPerPage + 5,
-        },
-        headers: {
-          "X-API-KEY": `${process.env.REACT_APP_API_KEY}`,
-        },
-      });
+      const response = await axios.get(
+        "https://api.opensea.io/api/v2/collections",
+        {
+          params: {
+            order_direction: "asc",
+            offset: 0,
+            limit: TotalNFTs,
+          },
+          headers: {
+            "X-API-KEY": `${process.env.REACT_APP_API_KEY}`,
+          },
+        }
+      );
 
-      const allData: NFT[] = response.data.assets.map((asset: any) => ({
-        id: asset.id,
-        name: asset.name || "No Name",
+      const allData: NFT[] = response.data.collections.map((asset: any) => ({
+        id: Math.random(),
+        name: asset.collection,
         description: asset.description || "No Description",
-        image_url: asset.image_url || "No Image URL",
-        background_color: asset.background_color || undefined,
-        asset_contract: asset.asset_contract || undefined,
+        image_url: asset.image_url || "/6.webp",
       }));
 
-      const filteredData: NFT[] = allData
-        .filter((nft: NFT) => nft.name !== "Ledger Legend Card")
-        .slice(0, NFTsPerPage);
+      const startIndex = (pageNumber - 1) * NFTsPerPage;
+      const endIndex = startIndex + NFTsPerPage;
+      const slicedData: NFT[] = allData.slice(startIndex, endIndex);
 
-      setNFTs(filteredData);
+      setNFTs(slicedData);
       setLoading(false);
     } catch (err: any) {
       setError(err.message || "An error occurred");
       setLoading(false);
     }
   };
+
+  console.log(nfts);
 
   useEffect(() => {
     fetchNFTs(page);
@@ -87,11 +90,11 @@ const Home: React.FC = () => {
           borderRadius: 0,
           backgroundColor: "rgb(0, 212, 255) 100.2%",
           padding: "10px",
-          marginTop: "20px",
+          marginTop: "50px",
         }}
       >
         <Pagination
-          count={8}
+          count={TotalPages}
           page={page}
           color="secondary"
           onChange={handlePageChange}
