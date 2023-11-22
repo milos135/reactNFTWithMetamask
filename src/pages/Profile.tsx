@@ -8,21 +8,17 @@ function Profile() {
   return (
     <StyledProfile>
       <h2>Profile Page</h2>
-      <Typography variant="body1">
-        {isMetamaskConnected ? (
-          <>
-            Connected with address: {address}
-            {balance && (
-              <>
-                <br />
-                Balance: {balance} ETH
-              </>
-            )}
-          </>
-        ) : (
-          <></>
-        )}
-      </Typography>
+      {isMetamaskConnected && (
+        <Typography variant="body1">
+          Connected with address: {address}
+          {balance && (
+            <>
+              <br />
+              Balance: {balance} ETH
+            </>
+          )}
+        </Typography>
+      )}
 
       <Typography variant="body1">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod

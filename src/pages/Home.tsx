@@ -57,8 +57,6 @@ const Home: React.FC = () => {
     }
   };
 
-  console.log(nfts);
-
   useEffect(() => {
     fetchNFTs(page);
   }, [page]);

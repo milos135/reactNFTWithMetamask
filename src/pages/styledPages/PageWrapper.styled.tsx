@@ -16,7 +16,7 @@ export const StyledProfile = styled(Box)`
   padding: 20px;
   background: #cfe7fa;
   color: black;
-  border-radius: 15px;
+ 
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   text-align: center;
   height: auto;

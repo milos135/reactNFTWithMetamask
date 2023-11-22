@@ -15,7 +15,7 @@ interface NFTCardProps {
 
 const CardStyled = {
   width: "250px",
-  height: "320",
+  height: "320px",
   margin: "16px",
   backgroundImage: "radial-gradient(circle farthest-side, #fceabb, #f8b500)",
   borderRadius: "15px",
